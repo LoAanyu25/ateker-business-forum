@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ateker Business Forum - Enhanced Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --sidebar-width: 250px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .main-container {
+            flex: 1;
+        }
+        
+        /* Header Styles */
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem !important;
+        }
+        
+        .nav-link:hover, .nav-link:focus {
+            color: white !important;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - 80px);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-menu a {
+            display: block;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 12px 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+        
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left-color: var(--secondary-color);
+        }
+        
+        .sidebar-menu i {
+            width: 25px;
+            text-align: center;
+            margin-right: 10px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 20px 30px;
+        }
+        
+        .section {
+            display: none;
+            padding: 20px 0;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Colorful Circles */
+        .circle-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .circle-item {
+            text-align: center;
+            width: 200px;
+        }
+        
+        .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .circle:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .circle i {
+            font-size: 3rem;
+        }
+        
+        .circle-networking {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .circle-growth {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .circle-community {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        
+        .circle-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .circle-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Vision, Mission & Values Boxes */
+        .vmv-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .vmv-box {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .vmv-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .vmv-header {
+            padding: 25px 25px 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .vmv-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .vmv-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .vision-box .vmv-header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+        }
+        
+        .mission-box .vmv-header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .values-box .vmv-header {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        
+        .vmv-content {
+            padding: 25px;
+        }
+        
+        .vmv-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 0;
+        }
+        
+        .values-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .values-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .values-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .value-icon {
+            width: 30px;
+            height: 30px;
+            background: #27ae60;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        /* Collapsible Cards */
+        .collapsible-card {
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .collapsible-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .collapsible-header h5 {
+            margin: 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .collapsible-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .collapsible-content.show {
+            max-height: 1000px;
+        }
+        
+        .subsector-item {
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        .subsector-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .subsector-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Business items */
+        .business-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .business-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Toggle icon animation */
+        .toggle-icon {
+            transition: transform 0.3s;
+        }
+        
+        .toggle-icon.rotated {
+            transform: rotate(180deg);
+        }
+        
+        /* Form Styles */
+        .form-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+        
+        /* Logo Upload Preview */
+        .logo-preview {
+            width: 150px;
+            height: 150px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .logo-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        
+        .logo-upload-text {
+            text-align: center;
+            color: #6c757d;
+        }
+        
+        /* Countries selector */
+        .countries-selector {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            padding: 10px;
+        }
+        
+        .country-checkbox {
+            margin-right: 8px;
+        }
+        
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+        }
+        
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .admin-table th, .admin-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .admin-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .admin-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .admin-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+        
+        .status-pending {
+            background-color: #ffeeba;
+            color: #856404;
+        }
+        
+        .status-approved {
+            background-color: #c3e6cb;
+            color: #155724;
+        }
+        
+        .status-rejected {
+            background-color: #f5c6cb;
+            color: #721c24;
+        }
+        
+        .action-btn {
+            padding: 5px 10px;
+            margin-right: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .btn-approve {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .btn-reject {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .btn-edit {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        
+        .btn-delete {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-links i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            margin-right: 15px;
+            margin-top: 5px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .newsletter-form input {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .newsletter-form button {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: var(--secondary-color);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #2980b9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Statistics Section */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 25px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 200px;
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* About Us Images */
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image-caption {
+            padding: 15px;
+            background: white;
+            font-style: italic;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Enhanced collapsible headers */
+        .collapsible-header {
+            position: relative;
+            padding-right: 50px;
+        }
+
+        .collapsible-badge {
+            position: absolute;
+            right: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 3px 10px;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 991.98px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .menu-text {
+                display: none;
+            }
+            
+            .sidebar-menu i {
+                margin-right: 0;
+            }
+            
+            .main-content {
+                margin-left: 70px;
+            }
+            
+            .navbar-nav {
+                padding: 1rem 0;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0 !important;
+            }
+            
+            .vmv-box {
+                min-width: 100%;
+            }
+            
+            .circle-container {
+                gap: 20px;
+            }
+            
+            .circle-item {
+                width: 150px;
+            }
+            
+            .circle {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .circle i {
+                font-size: 2.5rem;
+            }
+
+            .footer-content {
+                gap: 30px;
+            }
+
+            .stats-container {
+                flex-direction: column;
+            }
+
+            .stat-item {
+                min-width: 100%;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .sidebar {
+                width: 0;
+                padding: 0;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .menu-toggle {
+                display: block !important;
+            }
+            
+            .circle-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .circle-item {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .footer-column {
+                min-width: 100%;
+            }
+
+            .collapsible-badge {
+                position: static;
+                margin-left: 10px;
+            }
+        }
+        
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-building me-2"></i>Ateker Business Forum
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#register" id="registerNavLink">
+                            <i class="fas fa-user-plus me-1"></i> Register Here
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#adminLoginModal">
+                            <i class="fas fa-lock me-1"></i> Admin Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#admin" id="adminNavLink" style="display: none;">
+                            <i class="fas fa-cog me-1"></i> Admin Panel
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logoutLink" style="display: none;">
+                            <i class="fas fa-sign-out-alt me-1"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="#home" class="active" data-section="home"><i class="fas fa-home"></i> <span class="menu-text">Home</span></a></li>
+            <li><a href="#about" data-section="about"><i class="fas fa-info-circle"></i> <span class="menu-text">About Us</span></a></li>
+            <li><a href="#sectors" data-section="sectors">
+                <i class="fas fa-list"></i> <span class="menu-text">Business Sectors</span>
+            </a></li>
+            <li><a href="#services" data-section="services">
+                <i class="fas fa-briefcase"></i> <span class="menu-text">Our Service Providers</span>
+            </a></li>
+            <li><a href="#register" data-section="register">
+                <i class="fas fa-user-plus"></i> <span class="menu-text">Register Business</span>
+            </a></li>
+            <li><a href="#admin" data-section="admin" id="adminSidebarLink" style="display: none;">
+                <i class="fas fa-cog"></i> <span class="menu-text">Admin Panel</span>
+            </a></li>
+        </ul>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="main-container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="hero-section text-center">
+                    <div class="container">
+                        <h1 class="display-4 fw-bold mb-4">Connecting Businesses in the Ateker Community</h1>
+                        <p class="lead mb-4">Discover, connect, and grow with our comprehensive business directory</p>
+                        <a href="#services" class="btn btn-primary btn-lg me-2"><i class="fas fa-search me-1"></i> Explore Businesses</a>
+                        <a href="#register" class="btn btn-outline-light btn-lg" id="heroRegisterBtn"><i class="fas fa-plus me-1"></i> List Your Business</a>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">Welcome to Ateker Business Forum</h2>
+                    <p class="lead">Your gateway to business opportunities in the Ateker community</p>
+                    <p>We provide a comprehensive directory of businesses across various sectors, making it easier for customers to find reliable service providers and for businesses to increase their visibility.</p>
+                    
+                    <!-- Statistics Section -->
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="stat-number" id="businessCount">0</div>
+                            <div class="stat-label">Businesses Registered</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-globe-africa"></i>
+                            </div>
+                            <div class="stat-number" id="countryCount">0</div>
+                            <div class="stat-label">Countries Represented</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-number" id="visitorCount">0</div>
+                            <div class="stat-label">Monthly Visitors</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="stat-number" id="partnershipCount">0</div>
+                            <div class="stat-label">Successful Partnerships</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Colorful Circles -->
+                    <div class="circle-container">
+                        <div class="circle-item">
+                            <div class="circle circle-networking">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4 class="circle-title">Networking</h4>
+                            <p class="circle-description">Connect with other businesses and expand your professional network</p>
+                        </div>
+                        
+                        <div class="circle-item">
+                            <div class="circle circle-growth">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4 class="circle-title">Growth</h4>
+                            <p class="circle-description">Expand your business reach and discover new opportunities</p>
+                        </div>
+                        
+                        <div class="circle-item">
+                            <div class="circle circle-community">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4 class="circle-title">Community</h4>
+                            <p class="circle-description">Join a supportive ecosystem of like-minded entrepreneurs</p>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h4>Why Join Us?</h4>
+                            <p>By joining the Ateker Business Forum, you gain access to a vibrant community of businesses across multiple sectors. Our platform helps you:</p>
+                            <ul>
+                                <li>Increase your business visibility</li>
+                                <li>Connect with potential clients and partners</li>
+                                <li>Stay informed about industry trends</li>
+                                <li>Access exclusive business resources</li>
+                                <li>Participate in networking events</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>How It Works</h4>
+                            <p>Our platform makes it easy to connect with businesses and customers:</p>
+                            <ol>
+                                <li>Register your business on our platform</li>
+                                <li>Create a detailed business profile</li>
+                                <li>Get discovered by potential customers</li>
+                                <li>Connect with other businesses in your sector</li>
+                                <li>Grow your business through our network</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Us Section -->
+            <section id="about" class="section">
+                <div class="content-section">
+                    <h2 class="section-title">About Ateker Business Forum</h2>
+                    
+                    <!-- About Us Images -->
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <div class="about-image">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ateker Business Forum Meeting">
+                                <div class="about-image-caption">Our annual business networking conference</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="about-image">
+                                <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ateker Business Community">
+                                <div class="about-image-caption">Business leaders from the Ateker community</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Vision, Mission & Values Boxes -->
+                    <div class="vmv-container">
+                        <!-- Vision Box -->
+                        <div class="vmv-box vision-box">
+                            <div class="vmv-header">
+                                <i class="fas fa-eye vmv-icon"></i>
+                                <h3 class="vmv-title">Our Vision</h3>
+                            </div>
+                            <div class="vmv-content">
+                                <p>To be the leading platform for business connectivity and growth within the Ateker community, fostering economic development and prosperity for all members through innovation, collaboration, and sustainable practices.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Mission Box -->
+                        <div class="vmv-box mission-box">
+                            <div class="vmv-header">
+                                <i class="fas fa-bullseye vmv-icon"></i>
+                                <h3 class="vmv-title">Our Mission</h3>
+                            </div>
+                            <div class="vmv-content">
+                                <p>To connect businesses, facilitate partnerships, and create opportunities for entrepreneurs to thrive in a competitive market environment through our comprehensive business directory, networking events, and support services tailored to the needs of the Ateker community.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Values Box -->
+                        <div class="vmv-box values-box">
+                            <div class="vmv-header">
+                                <i class="fas fa-heart vmv-icon"></i>
+                                <h3 class="vmv-title">Our Values</h3>
+                            </div>
+                            <div class="vmv-content">
+                                <ul class="values-list">
+                                    <li>
+                                        <span class="value-icon"><i class="fas fa-users"></i></span>
+                                        <span><strong>Community:</strong> We believe in the power of community and collaboration</span>
+                                    </li>
+                                    <li>
+                                        <span class="value-icon"><i class="fas fa-shield-alt"></i></span>
+                                        <span><strong>Integrity:</strong> We operate with honesty and transparency in all our dealings</span>
+                                    </li>
+                                    <li>
+                                        <span class="value-icon"><i class="fas fa-lightbulb"></i></span>
+                                        <span><strong>Innovation:</strong> We embrace new ideas and approaches to business development</span>
+                                    </li>
+                                    <li>
+                                        <span class="value-icon"><i class="fas fa-door-open"></i></span>
+                                        <span><strong>Inclusivity:</strong> We welcome businesses of all sizes and sectors</span>
+                                    </li>
+                                    <li>
+                                        <span class="value-icon"><i class="fas fa-star"></i></span>
+                                        <span><strong>Excellence:</strong> We strive for excellence in all our services and interactions</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h4>Our History</h4>
+                            <p>Founded in 2015, the Ateker Business Forum began as a small initiative to connect local businesses in the region. Over the years, we have grown into a comprehensive platform serving hundreds of businesses across multiple sectors and countries.</p>
+                            <p>Today, we continue to expand our services and reach, always with the goal of supporting economic growth and development within the Ateker community. Our platform now includes businesses from Kenya, Uganda, Tanzania, South Sudan, and Ethiopia, creating a truly regional network of commerce and opportunity.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Another image at the bottom -->
+                    <div class="about-image mt-5">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Ateker Business Growth">
+                        <div class="about-image-caption">Celebrating business growth and success in the Ateker community</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Business Sectors Section -->
+            <section id="sectors" class="section">
+                <div class="content-section">
+                    <h2 class="section-title">Business Sectors</h2>
+                    <p class="lead mb-4">Explore our business sectors and discover the diverse range of enterprises in the Ateker community</p>
+                    
+                    <!-- Agriculture Sector -->
+                    <div class="collapsible-card">
+                        <div class="collapsible-header" onclick="toggleSector('agriculture')">
+                            <h5><i class="fas fa-seedling me-2"></i> Agriculture</h5>
+                            <span class="collapsible-badge">24 Businesses</span>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="collapsible-content" id="agriculture">
+                            <div class="subsector-item">Crop Production</div>
+                            <div class="subsector-item">Livestock Farming</div>
+                            <div class="subsector-item">Agro-processing</div>
+                            <div class="subsector-item">Agricultural Equipment</div>
+                            <div class="subsector-item">Horticulture</div>
+                            <div class="subsector-item">Fisheries & Aquaculture</div>
+                            <div class="subsector-item">Veterinary Services</div>
+                            <div class="subsector-item">Agricultural Consultancy</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Technology Sector -->
+                    <div class="collapsible-card">
+                        <div class="collapsible-header" onclick="toggleSector('technology')">
+                            <h5><i class="fas fa-laptop-code me-2"></i> Technology</h5>
+                            <span class="collapsible-badge">18 Businesses</span>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="collapsible-content" id="technology">
+                            <div class="subsector-item">Software Development</div>
+                            <div class="subsector-item">IT Services & Consultancy</div>
+                            <div class="subsector-item">Telecommunications</div>
+                            <div class="subsector-item">Digital Marketing</div>
+                            <div class="subsector-item">E-commerce Solutions</div>
+                            <div class="subsector-item">Hardware Supply</div>
+                            <div class="subsector-item">Cybersecurity</div>
+                            <div class="subsector-item">Data Analytics</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Manufacturing Sector -->
+                    <div class="collapsible-card">
+                        <div class="collapsible-header" onclick="toggleSector('manufacturing')">
+                            <h5><i class="fas fa-industry me-2"></i> Manufacturing</h5>
+                            <span class="collapsible-badge">15 Businesses</span>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="collapsible-content" id="manufacturing">
+                            <div class="subsector-item">Food Processing</div>
+                            <div class="subsector-item">Textile & Apparel</div>
+                            <div class="subsector-item">Construction Materials</div>
+                            <div class="subsector-item">Furniture Production</div>
+                            <div class="subsector-item">Plastic Products</div>
+                            <div class="subsector-item">Metal Works</div>
+                            <div class="subsector-item">Chemical Products</div>
+                            <div class="subsector-item">Packaging Solutions</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Healthcare Sector -->
+                    <div class="collapsible-card">
+                        <div class="collapsible-header" onclick="toggleSector('healthcare')">
+                            <h5><i class="fas fa-hospital me-2"></i> Healthcare</h5>
+                            <span class="collapsible-badge">22 Businesses</span>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="collapsible-content" id="healthcare">
+                            <div class="subsector-item">Hospitals & Clinics</div>
+                            <div class="subsector-item">Pharmaceuticals</div>
+                            <div class="subsector-item">Medical Equipment</div>
+                            <div class="subsector-item">Laboratory Services</div>
+                            <div class="subsector-item">Specialist Consultancy</div>
+                            <div class="subsector-item">Health Insurance</div>
+                            <div class="subsector-item">Alternative Medicine</div>
+                            <div class="subsector-item">Medical Training</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Education Sector -->
+                    <div class="collapsible-card">
+                        <div class="collapsible-header" onclick="toggleSector('education')">
+                            <h5><i class="fas fa-graduation-cap me-2"></i> Education</h5>
+                            <span class="collapsible-badge">17 Businesses</span>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="collapsible-content" id="education">
+                            <div class="subsector-item">Schools & Universities</div>
+                            <div class="subsector-item">Vocational Training</div>
+                            <div class="subsector-item">Educational Materials</div>
+                            <div class="subsector-item">E-Learning Solutions</div>
+                            <div class="subsector-item">Tutoring Services</div>
+                            <div class="subsector-item">Study Abroad Consultancy</div>
+                            <div class="subsector-item">Research Institutions</div>
+                            <div class="subsector-item">Special Needs Education</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Service Providers Section -->
+            <section id="services" class="section">
+                <div class="content-section">
+                    <h2 class="section-title">Our Service Providers</h2>
+                    <p class="lead mb-4">Discover businesses in the Ateker Business Forum directory</p>
+                    
+                    <div id="businessListContainer">
+                        <!-- Businesses will be loaded here dynamically -->
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Register Business Section -->
+            <section id="register" class="section">
+                <div class="content-section">
+                    <h2 class="section-title">Register Your Business</h2>
+                    <p class="lead mb-4">Join the Ateker Business Forum and expand your network</p>
+                    
+                    <div class="form-section">
+                        <form id="businessRegistrationForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="businessName" class="form-label">Business Name *</label>
+                                    <input type="text" class="form-control" id="businessName" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="businessType" class="form-label">Business Type *</label>
+                                    <select class="form-select" id="businessType" required>
+                                        <option value="">Select Business Type</option>
+                                        <option value="sole-proprietorship">Sole Proprietorship</option>
+                                        <option value="partnership">Partnership</option>
+                                        <option value="limited-company">Limited Company</option>
+                                        <option value="cooperative">Cooperative</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="sector" class="form-label">Business Sector *</label>
+                                    <select class="form-select" id="sector" required>
+                                        <option value="">Select Sector</option>
+                                        <option value="agriculture">Agriculture</option>
+                                        <option value="technology">Technology</option>
+                                        <option value="manufacturing">Manufacturing</option>
+                                        <option value="healthcare">Healthcare</option>
+                                        <option value="education">Education</option>
+                                        <option value="tourism">Tourism & Hospitality</option>
+                                        <option value="construction">Construction</option>
+                                        <option value="retail">Retail & Trade</option>
+                                        <option value="transport">Transport & Logistics</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="subsector" class="form-label">Business Sub-sector</label>
+                                    <input type="text" class="form-control" id="subsector">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="businessDescription" class="form-label">Business Description *</label>
+                                <textarea class="form-control" id="businessDescription" rows="3" required></textarea>
+                            </div>
+                            
+                            <!-- Logo Upload Section -->
+                            <div class="mb-4">
+                                <label class="form-label">Business Logo</label>
+                                <div class="logo-preview" id="logoPreview">
+                                    <img id="logoPreviewImage" src="" alt="Logo preview">
+                                    <div class="logo-upload-text" id="logoUploadText">
+                                        <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                        <p>Upload your logo</p>
+                                    </div>
+                                </div>
+                                <input type="file" class="form-control" id="businessLogo" accept="image/*" onchange="previewLogo(event)">
+                                <div class="form-text">Recommended size: 300x300 pixels. Max file size: 2MB</div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="contactPerson" class="form-label">Contact Person *</label>
+                                    <input type="text" class="form-control" id="contactPerson" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="position" class="form-label">Position *</label>
+                                    <input type="text" class="form-control" id="position" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="country" class="form-label">Country *</label>
+                                    <select class="form-select" id="country" required>
+                                        <option value="">Select Country</option>
+                                        <option value="kenya">Kenya</option>
+                                        <option value="uganda">Uganda</option>
+                                        <option value="tanzania">Tanzania</option>
+                                        <option value="south-sudan">South Sudan</option>
+                                        <option value="ethiopia">Ethiopia</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="city" class="form-label">City/Town *</label>
+                                    <input type="text" class="form-control" id="city" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Countries of Operation -->
+                            <div class="mb-3">
+                                <label class="form-label">Countries of Operation *</label>
+                                <div class="countries-selector">
+                                    <div class="form-check">
+                                        <input class="form-check-input country-checkbox" type="checkbox" id="countryKenya" value="kenya">
+                                        <label class="form-check-label" for="countryKenya">Kenya</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input country-checkbox" type="checkbox" id="countryUganda" value="uganda">
+                                        <label class="form-check-label" for="countryUganda">Uganda</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input country-checkbox" type="checkbox" id="countryTanzania" value="tanzania">
+                                        <label class="form-check-label" for="countryTanzania">Tanzania</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input country-checkbox" type="checkbox" id="countrySouthSudan" value="south-sudan">
+                                        <label class="form-check-label" for="countrySouthSudan">South Sudan</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input country-checkbox" type="checkbox" id="countryEthiopia" value="ethiopia">
+                                        <label class="form-check-label" for="countryEthiopia">Ethiopia</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input country-checkbox" type="checkbox" id="countryOther" value="other">
+                                        <label class="form-check-label" for="countryOther">Other African Countries</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Full Address</label>
+                                <textarea class="form-control" id="address" rows="2"></textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="website" class="form-label">Website (if any)</label>
+                                <input type="url" class="form-control" id="website">
+                            </div>
+                            
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="termsAgreement" required>
+                                <label class="form-check-label" for="termsAgreement">I agree to the <a href="#">Terms and Conditions</a> of the Ateker Business Forum *</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-lg">Submit Registration</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Panel Section -->
+            <section id="admin" class="section admin-panel">
+                <div class="content-section">
+                    <h2 class="section-title">Admin Panel</h2>
+                    <p class="lead mb-4">Manage business registrations and approvals</p>
+                    
+                    <div class="mb-4">
+                        <h4>Pending Approvals</h4>
+                        <div id="pendingBusinesses">
+                            <!-- Pending businesses will be loaded here -->
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4>All Businesses</h4>
+                        <div id="allBusinesses">
+                            <!-- All businesses will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="footer-title">About Ateker Business Forum</h3>
+                    <p>The Ateker Business Forum is dedicated to connecting businesses within the Ateker community, fostering economic growth, and creating opportunities for collaboration and networking.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#sectors"><i class="fas fa-chevron-right"></i> Business Sectors</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Service Providers</a></li>
+                        <li><a href="#register"><i class="fas fa-chevron-right"></i> Register Business</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Contact Information</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Business Avenue,<br>Nairobi, Kenya</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+254 700 123 456<br>+254 733 987 654</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@atekermarket.com<br>support@atekermarket.com</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p>Subscribe to our newsletter to get updates on new businesses, events, and opportunities in the Ateker community.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Ateker Business Forum. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Admin Login Modal -->
+    <div class="modal fade" id="adminLoginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Admin Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="adminLoginForm">
+                        <div class="mb-3">
+                            <label for="adminUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="adminUsername" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="adminPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="adminPassword" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="adminLoginBtn">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Business data structure
+        let businesses = JSON.parse(localStorage.getItem('businesses')) || [];
+        let currentAdmin = null;
+        
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if admin is logged in
+            checkAdminStatus();
+            
+            // Load businesses for the services section
+            loadApprovedBusinesses();
+            
+            // Load admin data if logged in
+            if (currentAdmin) {
+                loadAdminData();
+            }
+            
+            // Animate statistics counters
+            animateStatistics();
+            
+            // Link the register button in the header to the registration section
+            document.getElementById('heroRegisterBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                // Remove active class from all sidebar links
+                document.querySelectorAll('.sidebar-menu a').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to register link
+                document.querySelector('.sidebar-menu a[data-section="register"]').classList.add('active');
+                
+                // Hide all sections
+                document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+                
+                // Show the register section
+                document.getElementById('register').classList.add('active');
+                
+                // Scroll to top of the section
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Handle sidebar navigation
+            const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+            const sections = document.querySelectorAll('.section');
+            
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all sidebar links
+                    document.querySelectorAll('.sidebar-menu a').forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Hide all sections
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Show the target section
+                    const targetSection = this.getAttribute('data-section');
+                    document.getElementById(targetSection).classList.add('active');
+                    
+                    // Scroll to top of the section
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+            
+            // Toggle sidebar on mobile
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.querySelector('.sidebar');
+            
+            menuToggle.addEventListener('click', function() {
+                if (sidebar.style.width === '0px' || !sidebar.style.width) {
+                    sidebar.style.width = '250px';
+                    sidebar.style.padding = '20px 0';
+                } else {
+                    sidebar.style.width = '0';
+                    sidebar.style.padding = '0';
+                }
+            });
+            
+            // Handle form submission
+            const registrationForm = document.getElementById('businessRegistrationForm');
+            if (registrationForm) {
+                registrationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validate countries of operation
+                    const countryCheckboxes = document.querySelectorAll('.country-checkbox:checked');
+                    if (countryCheckboxes.length === 0) {
+                        alert('Please select at least one country of operation.');
+                        return;
+                    }
+                    
+                    // Gather selected countries
+                    const countriesOfOperation = Array.from(countryCheckboxes).map(cb => cb.value);
+                    
+                    // Create business object
+                    const business = {
+                        id: Date.now(), // Unique ID
+                        name: document.getElementById('businessName').value,
+                        type: document.getElementById('businessType').value,
+                        sector: document.getElementById('sector').value,
+                        subsector: document.getElementById('subsector').value,
+                        description: document.getElementById('businessDescription').value,
+                        contactPerson: document.getElementById('contactPerson').value,
+                        position: document.getElementById('position').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        country: document.getElementById('country').value,
+                        city: document.getElementById('city').value,
+                        countriesOfOperation: countriesOfOperation,
+                        address: document.getElementById('address').value,
+                        website: document.getElementById('website').value,
+                        logo: document.getElementById('logoPreviewImage').src || '',
+                        status: 'pending', // Default status
+                        createdAt: new Date().toISOString()
+                    };
+                    
+                    // Add to businesses array
+                    businesses.push(business);
+                    
+                    // Save to localStorage
+                    localStorage.setItem('businesses', JSON.stringify(businesses));
+                    
+                    alert('Thank you for your registration! We will review your application and contact you soon.');
+                    registrationForm.reset();
+                    // Reset logo preview
+                    document.getElementById('logoPreviewImage').style.display = 'none';
+                    document.getElementById('logoUploadText').style.display = 'block';
+                    
+                    // Update statistics
+                    animateStatistics();
+                });
+            }
+            
+            // Handle admin login
+            document.getElementById('adminLoginBtn').addEventListener('click', function() {
+                const username = document.getElementById('adminUsername').value;
+                const password = document.getElementById('adminPassword').value;
+                
+                // Simple authentication (in a real app, this would be server-side)
+                if (username === 'admin' && password === 'password') {
+                    currentAdmin = { username: username, loggedIn: true };
+                    localStorage.setItem('currentAdmin', JSON.stringify(currentAdmin));
+                    
+                    // Hide modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('adminLoginModal'));
+                    modal.hide();
+                    
+                    // Update UI for admin
+                    checkAdminStatus();
+                    loadAdminData();
+                    
+                    alert('Login successful!');
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            });
+            
+            // Handle logout
+            document.getElementById('logoutLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                currentAdmin = null;
+                localStorage.removeItem('currentAdmin');
+                checkAdminStatus();
+                alert('You have been logged out.');
+            });
+        });
+        
+        // Animate statistics counters
+        function animateStatistics() {
+            const businessCount = businesses.filter(b => b.status === 'approved').length;
+            const countryCount = new Set(businesses.filter(b => b.status === 'approved').map(b => b.country)).size;
+            
+            // Animate business count
+            animateValue('businessCount', 0, businessCount, 1500);
+            
+            // Animate country count
+            animateValue('countryCount', 0, countryCount, 1500);
+            
+            // Animate visitor count (simulated)
+            animateValue('visitorCount', 0, 1250, 1500);
+            
+            // Animate partnership count (simulated)
+            animateValue('partnershipCount', 0, 350, 1500);
+        }
+        
+        // Helper function to animate values
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Check admin status and update UI
+        function checkAdminStatus() {
+            const storedAdmin = localStorage.getItem('currentAdmin');
+            if (storedAdmin) {
+                currentAdmin = JSON.parse(storedAdmin);
+                document.getElementById('adminNavLink').style.display = 'block';
+                document.getElementById('adminSidebarLink').style.display = 'block';
+                document.getElementById('logoutLink').style.display = 'block';
+            } else {
+                document.getElementById('adminNavLink').style.display = 'none';
+                document.getElementById('adminSidebarLink').style.display = 'none';
+                document.getElementById('logoutLink').style.display = 'none';
+                document.getElementById('admin').classList.remove('active');
+                document.querySelector('.admin-panel').style.display = 'none';
+            }
+        }
+        
+        // Load approved businesses for the services section
+        function loadApprovedBusinesses() {
+            const container = document.getElementById('businessListContainer');
+            if (!container) return;
+            
+            // Clear container
+            container.innerHTML = '';
+            
+            // Get approved businesses grouped by sector
+            const approvedBusinesses = businesses.filter(b => b.status === 'approved');
+            const businessesBySector = {};
+            
+            approvedBusinesses.forEach(business => {
+                if (!businessesBySector[business.sector]) {
+                    businessesBySector[business.sector] = [];
+                }
+                businessesBySector[business.sector].push(business);
+            });
+            
+            // Create HTML for each sector
+            for (const sector in businessesBySector) {
+                const sectorBusinesses = businessesBySector[sector];
+                const sectorName = sector.charAt(0).toUpperCase() + sector.slice(1);
+                const sectorIcon = getSectorIcon(sector);
+                
+                const sectorHTML = `
+                    <div class="collapsible-card">
+                        <div class="collapsible-header" onclick="toggleSector('${sector}Businesses')">
+                            <h5>${sectorIcon} ${sectorName} Businesses</h5>
+                            <span class="collapsible-badge">${sectorBusinesses.length} Businesses</span>
+                            <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="collapsible-content" id="${sector}Businesses">
+                            <div class="business-list">
+                                ${sectorBusinesses.map(business => `
+                                    <div class="business-item">
+                                        ${business.logo ? `<img src="${business.logo}" alt="${business.name} logo" style="max-width: 80px; max-height: 80px; float: right; margin-left: 15px;">` : ''}
+                                        <h6>${business.name}</h6>
+                                        <p class="mb-1">${business.description}</p>
+                                        <p class="mb-1 text-muted"><i class="fas fa-map-marker-alt me-1"></i> ${business.city}, ${business.country}</p>
+                                        <p class="mb-1 text-muted"><i class="fas fa-phone me-1"></i> ${business.phone}</p>
+                                        <p class="mb-0 text-muted"><i class="fas fa-envelope me-1"></i> ${business.email}</p>
+                                        ${business.website ? `<p class="mb-0"><a href="${business.website}" target="_blank"><i class="fas fa-globe me-1"></i> Visit Website</a></p>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                container.innerHTML += sectorHTML;
+            }
+            
+            // If no approved businesses
+            if (approvedBusinesses.length === 0) {
+                container.innerHTML = '<p>No approved businesses yet. Check back soon!</p>';
+            }
+        }
+        
+        // Get appropriate icon for each sector
+        function getSectorIcon(sector) {
+            switch(sector) {
+                case 'agriculture': return '<i class="fas fa-seedling me-2"></i>';
+                case 'technology': return '<i class="fas fa-laptop-code me-2"></i>';
+                case 'manufacturing': return '<i class="fas fa-industry me-2"></i>';
+                case 'healthcare': return '<i class="fas fa-hospital me-2"></i>';
+                case 'education': return '<i class="fas fa-graduation-cap me-2"></i>';
+                case 'tourism': return '<i class="fas fa-hotel me-2"></i>';
+                case 'construction': return '<i class="fas fa-hard-hat me-2"></i>';
+                case 'retail': return '<i class="fas fa-shopping-cart me-2"></i>';
+                case 'transport': return '<i class="fas fa-truck me-2"></i>';
+                default: return '<i class="fas fa-building me-2"></i>';
+            }
+        }
+        
+        // Load admin data for the admin panel
+        function loadAdminData() {
+            if (!currentAdmin) return;
+            
+            // Show admin panel if we're on the admin section
+            if (window.location.hash === '#admin') {
+                document.querySelector('.admin-panel').style.display = 'block';
+            }
+            
+            // Load pending businesses
+            const pendingContainer = document.getElementById('pendingBusinesses');
+            const allContainer = document.getElementById('allBusinesses');
+            
+            if (pendingContainer) {
+                const pendingBusinesses = businesses.filter(b => b.status === 'pending');
+                
+                if (pendingBusinesses.length > 0) {
+                    pendingContainer.innerHTML = `
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Business Name</th>
+                                    <th>Sector</th>
+                                    <th>Contact</th>
+                                    <th>Date Submitted</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${pendingBusinesses.map(business => `
+                                    <tr>
+                                        <td>${business.name}</td>
+                                        <td>${business.sector}</td>
+                                        <td>${business.contactPerson}<br>${business.email}<br>${business.phone}</td>
+                                        <td>${new Date(business.createdAt).toLocaleDateString()}</td>
+                                        <td>
+                                            <button class="action-btn btn-approve" onclick="approveBusiness(${business.id})">Approve</button>
+                                            <button class="action-btn btn-reject" onclick="rejectBusiness(${business.id})">Reject</button>
+                                            <button class="action-btn btn-edit" onclick="editBusiness(${business.id})">Edit</button>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                } else {
+                    pendingContainer.innerHTML = '<p>No pending business registrations.</p>';
+                }
+            }
+            
+            if (allContainer) {
+                if (businesses.length > 0) {
+                    allContainer.innerHTML = `
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Business Name</th>
+                                    <th>Sector</th>
+                                    <th>Status</th>
+                                    <th>Contact</th>
+                                    <th>Date Submitted</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${businesses.map(business => `
+                                    <tr>
+                                        <td>${business.name}</td>
+                                        <td>${business.sector}</td>
+                                        <td><span class="status-badge status-${business.status}">${business.status}</span></td>
+                                        <td>${business.contactPerson}<br>${business.email}<br>${business.phone}</td>
+                                        <td>${new Date(business.createdAt).toLocaleDateString()}</td>
+                                        <td>
+                                            ${business.status !== 'approved' ? 
+                                                `<button class="action-btn btn-approve" onclick="approveBusiness(${business.id})">Approve</button>` : 
+                                                `<button class="action-btn btn-reject" onclick="rejectBusiness(${business.id})">Reject</button>`
+                                            }
+                                            <button class="action-btn btn-edit" onclick="editBusiness(${business.id})">Edit</button>
+                                            <button class="action-btn btn-delete" onclick="deleteBusiness(${business.id})">Delete</button>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                } else {
+                    allContainer.innerHTML = '<p>No business registrations yet.</p>';
+                }
+            }
+        }
+        
+        // Admin functions
+        function approveBusiness(id) {
+            const business = businesses.find(b => b.id === id);
+            if (business) {
+                business.status = 'approved';
+                localStorage.setItem('businesses', JSON.stringify(businesses));
+                loadAdminData();
+                loadApprovedBusinesses();
+                animateStatistics();
+                alert('Business approved successfully!');
+            }
+        }
+        
+        function rejectBusiness(id) {
+            const business = businesses.find(b => b.id === id);
+            if (business) {
+                business.status = 'rejected';
+                localStorage.setItem('businesses', JSON.stringify(businesses));
+                loadAdminData();
+                animateStatistics();
+                alert('Business rejected.');
+            }
+        }
+        
+        function editBusiness(id) {
+            // In a real application, this would open a form to edit the business details
+            alert('Edit functionality would open here. Business ID: ' + id);
+        }
+        
+        function deleteBusiness(id) {
+            if (confirm('Are you sure you want to delete this business?')) {
+                businesses = businesses.filter(b => b.id !== id);
+                localStorage.setItem('businesses', JSON.stringify(businesses));
+                loadAdminData();
+                loadApprovedBusinesses();
+                animateStatistics();
+                alert('Business deleted successfully.');
+            }
+        }
+        
+        // Toggle sector content
+        function toggleSector(sectorId) {
+            const sectorContent = document.getElementById(sectorId);
+            const toggleIcon = sectorContent.previousElementSibling.querySelector('.toggle-icon');
+            
+            sectorContent.classList.toggle('show');
+            toggleIcon.classList.toggle('rotated');
+        }
+        
+        // Logo preview function
+        function previewLogo(event) {
+            const reader = new FileReader();
+            const logoPreviewImage = document.getElementById('logoPreviewImage');
+            const logoUploadText = document.getElementById('logoUploadText');
+            
+            reader.onload = function() {
+                logoPreviewImage.src = reader.result;
+                logoPreviewImage.style.display = 'block';
+                logoUploadText.style.display = 'none';
+            }
+            
+            if (event.target.files[0]) {
+                // Check file size (max 2MB)
+                if (event.target.files[0].size > 2 * 1024 * 1024) {
+                    alert('File size exceeds 2MB. Please choose a smaller file.');
+                    event.target.value = '';
+                    return;
+                }
+                
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>
